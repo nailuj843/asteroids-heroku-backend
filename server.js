@@ -51,11 +51,11 @@ app.post('/login', async (req, res) => {
         .where({ username: `${userName}` })
         .then(result => {
             if (result.length === 0) {
-                res.send('create new user')
+                res.statusCode(204).send('create new user')
             } else if (result[0].password === passWord) {
                 res.send('login successful')
             } else {
-                res.send('incorrect password')
+                res.statusCode(401).send('incorrect password')
             }
         })
 
