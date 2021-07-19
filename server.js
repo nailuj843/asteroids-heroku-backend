@@ -55,7 +55,7 @@ app.get('/login', async (req, res) => {
     console.log(`req.username ${userName} req.password ${passWord}`)
     console.log(`dbName: ${dbEntry.name} dbPassword: ${dbEntry.password}`)
 
-
+    res.send(200).json(dbEntry)
     // console.log(`user ${userName} pass ${passWord} result: ${deEntry.password}`)
     // console.log(`data from db username: ${deEntry.username} password: ${deEntry.password}`)
 
