@@ -38,12 +38,7 @@ app.get('/test', (req, res) => {
 })
 
 const searchDBbyName = async (nameToSearch) => {
-    await knex
-        .select('*')
-        .from('scores')
-        .where({ username: `${nameToSearch}` })
-        .then(result => result)
-        .catch(err => res.status(404).json({ message: 'these are not the users you are looking for' }))
+
 
 }
 
@@ -55,7 +50,10 @@ app.get('/login', async (req, res) => {
     // SQL --> SELECT * FROM 'scores' WHERE username = `${userName}` AND password = `${password}`
     //, password: `${passWord}`
 
-    dbEntry = await searchDBbyName(userName)
+    let dbEntry = await knex
+        .select('*')
+        .from('scores')
+        .where({ username: `${nameToSearch}` })
 
     console.log(`req.username ${userName} req.password ${passWord}`)
     console.log(`dbName: ${dbEntry.name} dbPassword: ${dbEntry.password}`)
