@@ -49,13 +49,12 @@ app.get('/login', async (req, res) => {
         .select('*')
         .from('scores')
         .where({ username: `${userName}` })
-        .then(result => dbEntry = result)
-        .then(res.send(dbEntry))
-        .catch(err => res.status(404).json({ message: 'these are not the users you are looking for' }))
-    // .then(resultFromDatabase => data = resultFromDatabase.json())
-    // .then(res.send(data))
+        .then(result => res.send(result.json))
 
-    // console.log(`database match: ${dbEntry}`)
+        // .then(result => dbEntry = result)
+        // .then(res.send(dbEntry))
+        .catch(err => res.status(404).json({ message: 'these are not the users you are looking for' }))
+
 
     // console.log(`user ${userName} pass ${passWord} result: ${deEntry.password}`)
     // console.log(`data from db username: ${deEntry.username} password: ${deEntry.password}`)
