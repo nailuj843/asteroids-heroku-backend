@@ -49,8 +49,9 @@ app.get('/login', (req, res) => {
         .select('*')
         .from('scores')
         .where({ username: `${userName}` })
+
         .then(resultFromDatabase => data = resultFromDatabase.json())
-    then(res.send(data))
+        .then(res.send(data))
 
     console.log(`user ${userName} pass ${passWord}`)
 
