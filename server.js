@@ -5,7 +5,7 @@ const cors = require('cors');
 
 const app = express()
 
-app.use(cors({ origin: 'https://nailuj843-final-backend.herokuapp.com/', credentials: true }));
+app.use(cors({ origin: 'https://nailuj843-final-backend.herokuapp.com', credentials: true }));
 
 // SERVER
 app.listen(port, () => {
