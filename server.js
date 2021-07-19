@@ -37,12 +37,7 @@ app.get('/test', (req, res) => {
         })
 })
 
-const searchDBbyName = async (nameToSearch) => {
-
-
-}
-
-app.get('/login', async (req, res) => {
+app.post('/login', async (req, res) => {
     console.log('user tried to login')
     let userName = req.body.username
     let passWord = req.body.password
