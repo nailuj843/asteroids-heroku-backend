@@ -56,11 +56,11 @@ app.get('/login', async (req, res) => {
         .where({ username: `${userName}` })
         .then(result => {
             console.log(result)
-            dbEntry = [...result]
+            dbEntry = result
         })
 
     console.log(`req.username ${userName} req.password ${passWord}`)
-    console.log(`dbName: ${dbEntry.username} dbPassword: ${dbEntry.password}`)
+    console.log(`dbName: ${dbEntry[0].username} dbPassword: ${dbEntry[0].password}`)
 
     res.send(dbEntry)
 
