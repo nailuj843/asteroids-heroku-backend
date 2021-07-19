@@ -49,7 +49,7 @@ app.get('/login', async (req, res) => {
         .select('*')
         .from('scores')
         .where({ username: `${userName}` })
-        .then(result => res.send(result.json))
+        .then(result => res.status(200).json(result))
 
         // .then(result => dbEntry = result)
         // .then(res.send(dbEntry))
