@@ -37,6 +37,16 @@ app.get('/test', (req, res) => {
         })
 })
 
+const searchDBbyName = async (nameToSearch) => {
+    await knex
+        .select('*')
+        .from('scores')
+        .where({ username: `${nameToSearch}` })
+        .then(result => result)
+        .catch(err => res.status(404).json({ message: 'these are not the users you are looking for' }))
+
+}
+
 app.get('/login', async (req, res) => {
     console.log('user tried to login')
     let userName = req.body.username
@@ -45,31 +55,11 @@ app.get('/login', async (req, res) => {
     // SQL --> SELECT * FROM 'scores' WHERE username = `${userName}` AND password = `${password}`
     //, password: `${passWord}`
 
-    await knex
-        .select('*')
-        .from('scores')
-        .where({ username: `${userName}` })
-        .then(result => dbEntry = result)
-        .catch(err => res.status(404).json({ message: 'these are not the users you are looking for' }))
+    dbEntry = await searchDBbyName(userName)
 
     console.log(`req.username ${userName} req.password ${passWord}`)
     console.log(`dbName: ${dbEntry.name} dbPassword: ${dbEntry.password}`)
 
     res.send(200).json(dbEntry)
-    // console.log(`user ${userName} pass ${passWord} result: ${deEntry.password}`)
-    // console.log(`data from db username: ${deEntry.username} password: ${deEntry.password}`)
 
-    // if (deEntry.length === 0) {
-    //     res.send('No match found, create new user.')
-    // } else {
-    //     if (deEntry.password === passWord) {
-    //         res.send('login successful')
-    //     } else {
-    //         res.send('incorrect password')
-    //     }
-    // }
-
-    // res.send(dbEntry)
-
-    // res.send(`this is the data: user ${userName} pass ${passWord}`)
 })
