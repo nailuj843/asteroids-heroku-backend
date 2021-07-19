@@ -37,4 +37,20 @@ app.get('/test', (req, res) => {
         })
 })
 
+app.get('/login', (req, res) => {
+    console.log('user tried to login')
+    let userName = req.body.username
+    let passWord = req.body.password
+    let data = ''
+    // SQL --> SELECT * FROM 'scores' WHERE username = `${userName}` AND password = `${password}`
 
+    // knex 
+    //   .select('*')
+    //   .from('scores')
+    //   .where({username: `${userName}`, password: `${passWord}`} )
+    //   .then(resultFromDatabase => data = resultFromDatabase.json())
+
+    console.log(`user ${userName} pass ${passWord}`)
+
+    res.send(`this is the data: user ${userName} pass ${passWord}`)
+})
