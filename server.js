@@ -50,26 +50,27 @@ app.get('/login', async (req, res) => {
         .from('scores')
         .where({ username: `${userName}` })
         .then(result => dbEntry = result)
+        .then(res.send(dbEntry))
         .catch(err => res.status(404).json({ message: 'these are not the users you are looking for' }))
     // .then(resultFromDatabase => data = resultFromDatabase.json())
     // .then(res.send(data))
 
-    console.log(`database match: ${dbEntry}`)
+    // console.log(`database match: ${dbEntry}`)
 
-    console.log(`user ${userName} pass ${passWord} result: ${deEntry.password}`)
-    console.log(`data from db username: ${deEntry.username} password: ${deEntry.password}`)
+    // console.log(`user ${userName} pass ${passWord} result: ${deEntry.password}`)
+    // console.log(`data from db username: ${deEntry.username} password: ${deEntry.password}`)
 
-    if (deEntry.length === 0) {
-        res.send('No match found, create new user.')
-    } else {
-        if (deEntry.password === passWord) {
-            res.send('login successful')
-        } else {
-            res.send('incorrect password')
-        }
-    }
+    // if (deEntry.length === 0) {
+    //     res.send('No match found, create new user.')
+    // } else {
+    //     if (deEntry.password === passWord) {
+    //         res.send('login successful')
+    //     } else {
+    //         res.send('incorrect password')
+    //     }
+    // }
 
-    res.send(dbEntry)
+    // res.send(dbEntry)
 
     // res.send(`this is the data: user ${userName} pass ${passWord}`)
 })
