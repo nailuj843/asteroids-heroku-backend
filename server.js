@@ -43,14 +43,16 @@ app.get('/login', (req, res) => {
     let passWord = req.body.password
     let data = ''
     // SQL --> SELECT * FROM 'scores' WHERE username = `${userName}` AND password = `${password}`
+    //, password: `${passWord}`
 
-    // knex 
-    //   .select('*')
-    //   .from('scores')
-    //   .where({username: `${userName}`, password: `${passWord}`} )
-    //   .then(resultFromDatabase => data = resultFromDatabase.json())
+    knex
+        .select('*')
+        .from('scores')
+        .where({ username: `${userName}` })
+        .then(resultFromDatabase => data = resultFromDatabase.json())
+    then(res.send(data))
 
     console.log(`user ${userName} pass ${passWord}`)
 
-    res.send(`this is the data: user ${userName} pass ${passWord}`)
+    // res.send(`this is the data: user ${userName} pass ${passWord}`)
 })
