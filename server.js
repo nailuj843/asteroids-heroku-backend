@@ -56,13 +56,13 @@ app.get('/login', async (req, res) => {
 
     console.log(`database match: ${dbEntry}`)
 
-    console.log(`user ${userName} pass ${passWord} result: ${data.password}`)
-    console.log(`data from db username: ${data.username} password: ${data.password}`)
+    console.log(`user ${userName} pass ${passWord} result: ${deEntry.password}`)
+    console.log(`data from db username: ${deEntry.username} password: ${deEntry.password}`)
 
-    if (data.length === 0) {
+    if (deEntry.length === 0) {
         res.send('No match found, create new user.')
     } else {
-        if (data.password === passWord) {
+        if (deEntry.password === passWord) {
             res.send('login successful')
         } else {
             res.send('incorrect password')
