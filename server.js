@@ -49,14 +49,14 @@ app.get('/login', (req, res) => {
         .select('*')
         .from('scores')
         .where({ username: `${userName}` })
-        .then(result => console.log(result))
+        .then(result => dbEntry = result)
         .catch(err => res.status(404).json({ message: 'these are not the users you are looking for' }))
     // .then(resultFromDatabase => data = resultFromDatabase.json())
     // .then(res.send(data))
 
     console.log(`database match: ${dbEntry}`)
 
-    res.send('looked for a match')
+    res.send(dbEntry)
 
     // res.send(`this is the data: user ${userName} pass ${passWord}`)
 })
