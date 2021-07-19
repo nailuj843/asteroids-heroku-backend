@@ -49,7 +49,7 @@ app.get('/login', (req, res) => {
         .select('*')
         .from('scores')
         .where({ username: `${userName}` })
-        .then(result => dbEntry = result)
+        .then(result => dbEntry = result.json)
         .catch(err => res.status(404).json({ message: 'these are not the users you are looking for' }))
     // .then(resultFromDatabase => data = resultFromDatabase.json())
     // .then(res.send(data))
