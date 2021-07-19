@@ -50,10 +50,10 @@ app.get('/login', async (req, res) => {
     // SQL --> SELECT * FROM 'scores' WHERE username = `${userName}` AND password = `${password}`
     //, password: `${passWord}`
 
-    let dbEntry = await knex
+    dbEntry = await knex
         .select('*')
         .from('scores')
-        .where({ username: `${nameToSearch}` })
+        .where({ username: `${userName}` })
 
     console.log(`req.username ${userName} req.password ${passWord}`)
     console.log(`dbName: ${dbEntry.name} dbPassword: ${dbEntry.password}`)
