@@ -37,7 +37,7 @@ app.get('/test', (req, res) => {
         })
 })
 
-app.get('/login', (req, res) => {
+app.get('/login', async (req, res) => {
     console.log('user tried to login')
     let userName = req.body.username
     let passWord = req.body.password
@@ -45,7 +45,7 @@ app.get('/login', (req, res) => {
     // SQL --> SELECT * FROM 'scores' WHERE username = `${userName}` AND password = `${password}`
     //, password: `${passWord}`
 
-    knex
+    await knex
         .select('*')
         .from('scores')
         .where({ username: `${userName}` })
