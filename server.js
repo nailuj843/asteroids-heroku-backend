@@ -57,7 +57,7 @@ app.get('/login', async (req, res) => {
         .then(result => {
             if (result.length === 0) {
                 res.send('create new user')
-            } else if (result[0].password === password) {
+            } else if (result[0].password === passWord) {
                 res.send('login successful')
             } else {
                 res.send('incorrect password')
