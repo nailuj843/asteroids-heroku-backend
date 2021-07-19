@@ -50,14 +50,11 @@ app.get('/login', async (req, res) => {
         .from('scores')
         .where({ username: `${userName}` })
         .then(result => dbEntry = result)
-        // .then(result => res.status(200).json(result))
-
-        // .then(result => dbEntry = result)
-        // .then(res.send(dbEntry))
         .catch(err => res.status(404).json({ message: 'these are not the users you are looking for' }))
 
     console.log(`req.username ${userName} req.password ${passWord}`)
     console.log(`dbName: ${dbEntry.name} dbPassword: ${dbEntry.password}`)
+
 
     // console.log(`user ${userName} pass ${passWord} result: ${deEntry.password}`)
     // console.log(`data from db username: ${deEntry.username} password: ${deEntry.password}`)
