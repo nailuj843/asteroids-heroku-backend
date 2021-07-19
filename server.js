@@ -58,6 +58,6 @@ app.get('/login', async (req, res) => {
     console.log(`req.username ${userName} req.password ${passWord}`)
     console.log(`dbName: ${dbEntry.name} dbPassword: ${dbEntry.password}`)
 
-    res.send(200).json(dbEntry)
+    res.send(dbEntry)
 
 })
