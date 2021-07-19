@@ -41,7 +41,7 @@ app.get('/login', (req, res) => {
     console.log('user tried to login')
     let userName = req.body.username
     let passWord = req.body.password
-    let data = ''
+    let dbEntry = ''
     // SQL --> SELECT * FROM 'scores' WHERE username = `${userName}` AND password = `${password}`
     //, password: `${passWord}`
 
@@ -49,12 +49,14 @@ app.get('/login', (req, res) => {
         .select('*')
         .from('scores')
         .where({ username: `${userName}` })
-        .then(data => res.status(200).json(data))
+        .then(result => dbEntry = result)
         .catch(err => res.status(404).json({ message: 'these are not the users you are looking for' }))
     // .then(resultFromDatabase => data = resultFromDatabase.json())
     // .then(res.send(data))
 
-    console.log(`user ${userName} pass ${passWord}`)
+    console.log(`database match: ${dbEntry}`)
+
+    res.send('looked for a match')
 
     // res.send(`this is the data: user ${userName} pass ${passWord}`)
 })
