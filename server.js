@@ -46,7 +46,7 @@ app.get('/login', async (req, res) => {
     console.log('user tried to login')
     let userName = req.body.username
     let passWord = req.body.password
-    let dbEntry = []
+
     // SQL --> SELECT * FROM 'scores' WHERE username = `${userName}` AND password = `${password}`
     //, password: `${passWord}`
 
@@ -55,13 +55,15 @@ app.get('/login', async (req, res) => {
         .from('scores')
         .where({ username: `${userName}` })
         .then(result => {
-            console.log(result)
-            dbEntry = result
+            if (result.length === 0) {
+                res.send('create new user')
+            } else if (result[0].password === password) {
+                res.send('login successful')
+            } else {
+                res.send('incorrect password')
+            }
         })
 
-    console.log(`req.username ${userName} req.password ${passWord}`)
-    console.log(`dbName: ${dbEntry[0].username} dbPassword: ${dbEntry[0].password}`)
 
-    res.send(dbEntry)
 
 })
