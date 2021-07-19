@@ -41,7 +41,7 @@ app.get('/login', async (req, res) => {
     console.log('user tried to login')
     let userName = req.body.username
     let passWord = req.body.password
-    let dbEntry = ''
+    let dbEntry = []
     // SQL --> SELECT * FROM 'scores' WHERE username = `${userName}` AND password = `${password}`
     //, password: `${passWord}`
 
@@ -55,6 +55,19 @@ app.get('/login', async (req, res) => {
     // .then(res.send(data))
 
     console.log(`database match: ${dbEntry}`)
+
+    console.log(`user ${userName} pass ${passWord} result: ${data.password}`)
+    console.log(`data from db username: ${data.username} password: ${data.password}`)
+
+    if (data.length === 0) {
+        res.send('No match found, create new user.')
+    } else {
+        if (data.password === passWord) {
+            res.send('login successful')
+        } else {
+            res.send('incorrect password')
+        }
+    }
 
     res.send(dbEntry)
 
