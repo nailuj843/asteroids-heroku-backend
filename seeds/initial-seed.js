@@ -7,9 +7,9 @@ exports.seed = function (knex) {
     .then(function () {
       // Inserts seed entries
       return knex('scores').insert([
-        { username: 'julian', password: 'asdf', hiscore: 0 },
-        { username: 'dot', password: 'qwer', hiscore: 0 },
-        { username: 'ian', password: 'zxcv', hiscore: 0 },
+        { username: 'julian', password: 'asdf', hiscore: 9 },
+        { username: 'dot', password: 'qwer', hiscore: 88 },
+        { username: 'ian', password: 'zxcv', hiscore: 701 },
       ]);
     });
 };

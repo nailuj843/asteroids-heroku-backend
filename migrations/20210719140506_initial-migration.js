@@ -6,7 +6,7 @@ exports.up = function (knex) {
         table.increments('id'); // adds an auto incrementing PK column
         table.string('username').notNullable();
         table.string('password').notNullable();
-        table.integer('hiscore');
+        table.integer('hiscore').notNullable();
     });
 };
 
