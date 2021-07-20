@@ -2,7 +2,7 @@ const express = require('express')
 const port = process.env.PORT || 3001
 const deployTypes = ['development', 'production']
 const deployType = deployTypes[1]
-const originURL = 'http://localhost:3000'
+let originURL = 'http://localhost:3000'
 
 const knex = require('knex')(require('./knexfile.js')[deployType]);
 const cors = require('cors');
