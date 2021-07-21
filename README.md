@@ -37,7 +37,7 @@ DELETE '/delete'
 -- if username doesn't match with a username in the database, 
     sends { message: 'The User you attempted to delete could not be found. Please try again' }
 
-POST '/updateHiScore'
+PUT '/updateHiScore'
 -- displays 'user updated score: username <username> score <score>`
 -- takes in object {username: 'username', score: 'score'}
 -- if username matches with a username in the database, 
