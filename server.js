@@ -114,7 +114,7 @@ app.delete('/delete', (req, res) => {
         )
 })
 
-app.post('/updateHiScore', (req, res) => {
+app.put('/updateHiScore', (req, res) => {
     console.log(`user updated score: username ${req.body.username} score ${req.body.score}`)
     knex('scores')
         .where({ username: req.body.username })
